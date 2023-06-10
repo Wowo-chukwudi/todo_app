@@ -41,8 +41,6 @@ class _TodoListState extends State<TodoList> {
               ),
             ),
           )
-        : TodoCard(
-            todoListt: provider.getList,
-          );
+        : const TodoCard();
   }
 }

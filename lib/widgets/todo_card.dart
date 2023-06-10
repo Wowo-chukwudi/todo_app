@@ -6,13 +6,14 @@ import 'package:todo_app/provider/todo_provider.dart';
 import 'package:todo_app/screens/new_todo.dart';
 
 class TodoCard extends StatelessWidget {
-  final List<Map<String, dynamic>> todoListt;
-  const TodoCard({super.key, required this.todoListt});
+  const TodoCard({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<TodoProvider>(context);
-    final todoList = todoListt;
+    final todoList = provider.getList;
     return ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: todoList.length,
