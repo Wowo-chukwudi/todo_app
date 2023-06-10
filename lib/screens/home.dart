@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/database/db.dart';
 import 'package:todo_app/provider/todo_provider.dart';
 import 'package:todo_app/screens/new_todo.dart';
 import 'package:todo_app/widgets/todo_card.dart';
@@ -13,6 +14,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
+
+  final todoprovider = TodoProvider();
+
+  getTodoList() async {
+    final data = await SQLHelper.getItems();
+    setState(() {
+      todoprovider.getList = data;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getTodoList();
+  }
 
   @override
   Widget build(BuildContext context) {
